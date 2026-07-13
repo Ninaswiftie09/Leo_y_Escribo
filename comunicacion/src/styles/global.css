@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fffdf9;
+  color: #2b2a3d;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 100%;
+  max-width: 900px;
+  padding: 2rem;
+  border: 2px solid #e5e0f0;
+  border-radius: 24px;
+  background: #ffffff;
+}
+
+.card.small {
+  max-width: 420px;
+}
+
+.center {
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.9rem 1.4rem;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+.button.primary {
+  background: #7a4fbf;
+  color: white;
+}
+
+.button.secondary {
+  background: #f3ecff;
+  color: #7a4fbf;
+  border: 2px solid #7a4fbf;
+}
+
+.text-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: #7a4fbf;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  display: block;
+  padding: 0.8rem;
+  margin: 0.4rem 0 1rem;
+  border: 1px solid #cfc8dd;
+  border-radius: 12px;
+  font-size: 1rem;
+}
+
+.lesson-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.lesson-card {
+  padding: 1.2rem;
+  border: 2px solid #e5e0f0;
+  border-radius: 18px;
+  text-decoration: none;
+  color: #2b2a3d;
+  background: #fffdf9;
+}
+
+.lesson-card span {
+  display: block;
+  font-size: 0.85rem;
+  color: #7a4fbf;
+  margin-bottom: 0.4rem;
+}

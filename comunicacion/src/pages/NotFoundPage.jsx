@@ -1,9 +1,18 @@
-function HomePage() {
+import { Link } from 'react-router-dom'
+
+function NotFoundPage() {
   return (
-    <main>
-      <h1>Solo para que exista</h1>
+    <main className="page">
+      <section className="card center">
+        <h1>Página no encontrada</h1>
+        <p>La página que buscas no existe.</p>
+
+        <Link className="button primary" to="/home">
+          Volver al inicio
+        </Link>
+      </section>
     </main>
   )
 }
 
-export default HomePage
+export default NotFoundPage
