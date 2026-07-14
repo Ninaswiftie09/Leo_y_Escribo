@@ -1,0 +1,107 @@
+/* ============================================================
+   typography.css — Leo y Escribo
+   Clases reutilizables para contenido de lectura inicial.
+   Fuente de lectura : Andika  (--font-content)
+   Fuente de interfaz: Nunito  (--font-ui)
+   Fuente de apoyo   : Lexend  (--font-alt)
+   ============================================================ */
+
+/* ── Letra individual ──────────────────────────────────────── */
+/* Para actividades donde se muestra una sola letra */
+.text-letter {
+  font-family: var(--font-content);
+  font-size: 5rem;         /* 80px */
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+}
+
+/* ── Sílaba ────────────────────────────────────────────────── */
+/* Para mostrar sílabas en ejercicios de unión o reconocimiento */
+.text-syllable {
+  font-family: var(--font-content);
+  font-size: var(--font-size-syllable);  /* 56px */
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+}
+
+/* ── Palabra ───────────────────────────────────────────────── */
+/* Para mostrar palabras completas en actividades */
+.text-word {
+  font-family: var(--font-content);
+  font-size: var(--font-size-xl);        /* 32px */
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+/* ── Oración ───────────────────────────────────────────────── */
+/* Para lecturas cortas y oraciones de práctica */
+.text-sentence {
+  font-family: var(--font-content);
+  font-size: var(--font-size-lg);        /* 24px */
+  font-weight: var(--font-weight-normal);
+  line-height: 1.9;                      /* espaciado amplio para lectura inicial */
+  color: var(--color-text);
+}
+
+/* ── Texto de lectura general ──────────────────────────────── */
+/* Para párrafos y bloques de texto en actividades */
+.text-reading {
+  font-family: var(--font-content);
+  font-size: var(--font-size-md);        /* 20px */
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height);
+  color: var(--color-text);
+}
+
+/* ── Instrucción ───────────────────────────────────────────── */
+/* Para instrucciones de actividad — Lexend por claridad */
+.text-instruction {
+  font-family: var(--font-alt);
+  font-size: var(--font-size-md);        /* 20px */
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height);
+  color: var(--color-text-alt);
+}
+
+/* ── Instrucción destacada ─────────────────────────────────── */
+/* Instrucción principal de la actividad, más visible */
+.text-instruction--bold {
+  font-family: var(--font-alt);
+  font-size: var(--font-size-lg);        /* 24px */
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height);
+  color: var(--color-text);
+}
+
+/* ── Etiqueta de botón ─────────────────────────────────────── */
+/* Para texto dentro de botones cuando se use fuera del componente .btn */
+.text-btn {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+}
+
+/* ── Título de sección UI ──────────────────────────────────── */
+/* Títulos de pantalla, menús y navegación */
+.text-ui-title {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+}
+
+/* ── Etiqueta UI pequeña ───────────────────────────────────── */
+/* Para labels, badges, contadores y nav */
+.text-ui-label {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+}

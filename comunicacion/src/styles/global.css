@@ -155,30 +155,6 @@ p {
   line-height: var(--line-height);
 }
 
-/* Clase utilitaria: contenido de lectura (letras, sílabas, palabras) */
-.text-reading {
-  font-family: var(--font-content);
-  font-size: var(--font-size-md);
-  line-height: var(--line-height);
-}
-
-/* Letras o sílabas grandes en actividades */
-.text-syllable {
-  font-family: var(--font-content);
-  font-size: var(--font-size-syllable);
-  font-weight: var(--font-weight-bold);
-  line-height: 1;
-  letter-spacing: 0.02em;
-}
-
-/* Instrucción secundaria con Lexend */
-.text-instruction {
-  font-family: var(--font-alt);
-  font-size: var(--font-size-md);
-  color: var(--color-text-alt);
-  line-height: var(--line-height);
-}
-
 /* ── 5. Botón ──────────────────────────────────────────────── */
 .btn {
   display: inline-flex;
