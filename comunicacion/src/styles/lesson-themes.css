@@ -1,0 +1,58 @@
+/* Paleta semántica global de Leo y Escribo.
+   Los colores de acierto, reintento y premio conservan siempre su significado. */
+:root {
+  --color-action: #1982C4;
+  --color-action-secondary: #2E86C7;
+  --color-success: #1E8E4D;
+  --color-support: #6FCF97;
+  --color-retry: #FF9500;
+  --color-reward: #FFCA3A;
+  --color-accent: #6A4C93;
+  --color-accent-soft: #FFB088;
+  --color-background: #F4F8FB;
+  --color-surface: #FFFDF9;
+  --color-text: #243B53;
+
+  /* Alias compatibles con los estilos globales existentes. */
+  --color-correct: var(--color-success);
+  --color-bg: var(--color-background);
+  --color-bg-card: var(--color-surface);
+}
+
+/* Los componentes deben combinar color con texto, icono o audio para comunicar estados. */
+
+/* Unidades 1 y 4 comparten el tema azul. Los colores se repiten intencionalmente. */
+.lesson-theme--unit-1,
+.lesson-theme--unit-4 {
+  --lesson-primary: var(--color-action);
+  --lesson-secondary: var(--color-action-secondary);
+  --lesson-accent: var(--color-support);
+  --lesson-surface: var(--color-surface);
+  --lesson-border: var(--color-action-secondary);
+  --lesson-text: var(--color-text);
+  --lesson-background: var(--color-background);
+}
+
+/* Unidades 2 y 5 comparten el tema morado; la acción principal sigue siendo azul. */
+.lesson-theme--unit-2,
+.lesson-theme--unit-5 {
+  --lesson-primary: var(--color-accent);
+  --lesson-secondary: var(--color-accent-soft);
+  --lesson-accent: var(--color-action);
+  --lesson-surface: var(--color-surface);
+  --lesson-border: var(--color-accent-soft);
+  --lesson-text: var(--color-text);
+  --lesson-background: var(--color-background);
+}
+
+/* Unidades 3 y 6 comparten el tema cielo y menta. */
+.lesson-theme--unit-3,
+.lesson-theme--unit-6 {
+  --lesson-primary: var(--color-action-secondary);
+  --lesson-secondary: var(--color-support);
+  --lesson-accent: var(--color-accent-soft);
+  --lesson-surface: var(--color-surface);
+  --lesson-border: var(--color-support);
+  --lesson-text: var(--color-text);
+  --lesson-background: var(--color-background);
+}
