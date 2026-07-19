@@ -1,0 +1,317 @@
+/* ============================================================
+   syllables.css — Actividad: Escuchar y seleccionar sílabas
+
+   Reutiliza:
+   - global.css
+   - typography.css
+   - Button.jsx
+   - Card.jsx
+
+   ============================================================ */
+
+
+/*Contendero principal de la actividad*/
+
+.syllables-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+/* Tarjeta principal donde se mostrarán las opciones */
+
+.syllables-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+
+    align-items: center;
+    text-align: center;
+
+    min-height: 580px;
+}
+
+
+/* Instrucciones */
+
+.syllables-instructions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+
+    max-width: 720px;
+}
+
+.syllables-instructions p {
+    margin: 0;
+}
+
+
+/* Área de audio */
+
+.syllables-audio {
+    display: flex;
+    justify-content: center;
+}
+
+.syllables-audio .btn {
+    min-width: 260px;
+}
+
+
+/* Opciones de sílabas */
+/* Es un grid */
+
+.syllables-options {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(170px, 1fr));
+
+    gap: var(--space-lg);
+}
+
+
+/* Para el botón de sílaba */
+
+.syllable-button {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 120px;
+
+    padding: var(--space-lg);
+
+    border: none;
+    border-radius: var(--radius-lg);
+
+    cursor: pointer;
+
+    font-family: var(--font-content);
+    font-size: var(--font-size-syllable);
+    font-weight: var(--font-weight-bold);
+
+    color: var(--color-text);
+
+    box-shadow: var(--shadow-btn);
+
+    transition:
+        transform var(--transition),
+        background-color var(--transition),
+        box-shadow var(--transition),
+        filter var(--transition);
+}
+
+.syllable-button:hover {
+
+    transform: translateY(-3px);
+
+    filter: brightness(1.05);
+
+}
+
+.syllable-button:active {
+
+    transform: translateY(2px);
+
+}
+
+
+/* Colores automáticos de los botones
+   Cambian según el tema de la unidad (lesson-theme) */
+
+.syllable-button:nth-child(5n + 1) {
+    background: var(--lesson-primary);
+    color: white;
+}
+
+.syllable-button:nth-child(5n + 2) {
+    background: var(--lesson-secondary);
+    color: var(--lesson-text);
+}
+
+.syllable-button:nth-child(5n + 3) {
+    background: var(--lesson-accent);
+    color: var(--lesson-text);
+}
+
+.syllable-button:nth-child(5n + 4) {
+    background: var(--color-reward);
+    color: var(--color-text);
+}
+
+.syllable-button:nth-child(5n + 5) {
+    background: var(--color-accent-soft);
+    color: var(--color-text);
+}
+
+
+/* Estado seleccionado */
+
+.syllable-button--selected {
+
+    outline: 4px solid var(--color-action);
+
+    outline-offset: 3px;
+
+    transform: scale(1.03);
+
+}
+
+
+/* Si el estado es correcto */
+
+.syllable-button--correct {
+
+    background: var(--color-correct);
+
+    color: white;
+
+    animation: syllable-correct .35s ease;
+
+}
+
+
+/* Si el estado es incorrecto */
+
+.syllable-button--incorrect {
+
+    background: var(--color-retry);
+
+    color: var(--color-text);
+
+    animation: syllable-shake .35s ease;
+
+}
+
+
+/* Para la retroalimentación */
+
+.syllables-feedback {
+
+    min-height: 56px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-sm);
+
+    padding: var(--space-md) var(--space-lg);
+
+    border-radius: var(--radius-md);
+
+    font-family: var(--font-ui);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+
+}
+
+
+.syllables-feedback--correct {
+
+    background: var(--color-correct);
+
+    color: white;
+
+}
+
+
+.syllables-feedback--retry {
+
+    background: var(--color-retry);
+
+    color: var(--color-text);
+
+}
+
+
+/* Propuesta de animación para sílabas correctas */
+
+@keyframes syllable-correct {
+
+    0% {
+        transform: scale(.9);
+    }
+
+    60% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+@keyframes syllable-shake {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-6px);
+    }
+
+    40% {
+        transform: translateX(6px);
+    }
+
+    60% {
+        transform: translateX(-4px);
+    }
+
+    80% {
+        transform: translateX(4px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+
+}
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+    .syllables-options {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+    .syllable-button {
+
+        min-height: 100px;
+
+        font-size: 3rem;
+
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .syllables-options {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .syllable-button {
+
+        min-height: 90px;
+
+        font-size: 2.5rem;
+
+    }
+
+}
