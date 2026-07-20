@@ -1,0 +1,279 @@
+/* login.css — tarjeta deslizante (login/registro), inspirada en
+   github.com/AsmrProg-YT/Modern-Login, adaptada a los tokens de la app.
+   Acento: --color-accent (morado) — a propósito NO --color-action (azul),
+   para diferenciar esta pantalla del color de acción del resto de la app.
+   Solo se importa desde LoginPage.jsx (no afecta otras pantallas). */
+
+.login-page {
+  align-items: center;
+  justify-content: center;
+}
+
+.login-shell {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1280px;
+  min-height: 800px;
+  margin-inline: auto;
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Paneles de formulario (superpuestos, se deslizan) ────────── */
+.login-form-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out, visibility 0.6s;
+}
+
+.login-form-panel--signin {
+  z-index: 2;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.login-form-panel--signup {
+  opacity: 0;
+  z-index: 1;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* El panel que se va se desvanece rápido (0.3s) para no quedar visible
+   a medio camino mientras el otro entra — evita el cruce "sucio". */
+.login-shell--active .login-form-panel--signin {
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.6s ease-in-out, opacity 0.3s ease-in-out, visibility 0.6s;
+}
+
+.login-shell--active .login-form-panel--signup {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  visibility: visible;
+  pointer-events: auto;
+  transition: transform 0.6s ease-in-out, opacity 0.35s ease-in-out 0.3s, visibility 0s 0.3s;
+}
+
+.login-form {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 0 var(--space-xl);
+  font-family: var(--font-content);
+}
+
+.login-form h1 {
+  font-family: var(--font-ui);
+  margin-bottom: var(--space-xs);
+}
+
+.login-form input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: color-mix(in srgb, var(--color-border) 45%, white);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-content);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+.login-form input:focus {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 30%, transparent);
+}
+
+.login-social-icon {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-text-alt);
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.login-social-icon:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.login-form__feedback {
+  width: 100%;
+  font-size: var(--font-size-xs);
+  text-align: center;
+}
+
+/* Accesible para lectores de pantalla, oculto visualmente
+   (los inputs siguen el estilo "placeholder-only" del diseño de referencia) */
+.login-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Panel decorativo que se desliza sobre la tarjeta ──────────── */
+.login-toggle-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 150px 0 0 100px;
+  transition: transform 0.6s ease-in-out;
+  z-index: 1000;
+}
+
+.login-shell--active .login-toggle-container {
+  transform: translateX(-100%);
+  border-radius: 0 150px 100px 0;
+}
+
+.login-toggle {
+  position: relative;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-accent), #4d3a6b);
+  color: #ffffff;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.login-shell--active .login-toggle {
+  transform: translateX(50%);
+}
+
+.login-toggle-panel {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 0 var(--space-xl);
+  text-align: center;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.login-toggle-panel h1 { font-family: var(--font-ui); color: #ffffff; }
+.login-toggle-panel p { font-size: var(--font-size-sm); }
+
+.login-toggle-panel--left { transform: translateX(-200%); }
+.login-shell--active .login-toggle-panel--left { transform: translateX(0); }
+
+.login-toggle-panel--right { right: 0; transform: translateX(0); }
+.login-shell--active .login-toggle-panel--right { transform: translateX(200%); }
+
+.login-toggle__button {
+  padding: var(--space-sm) var(--space-xl);
+  font-family: var(--font-ui);
+  font-weight: var(--font-weight-bold);
+  color: #ffffff;
+  background: transparent;
+  border: 2px solid #ffffff;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.login-toggle__button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.login-back-link {
+  margin-top: var(--space-lg);
+}
+
+.login-back-link__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+/* ── Móvil: sin deslizado lateral (no cabe a 2 columnas < 720px);
+   el panel de acento pasa a ser un banner arriba y solo se ve
+   el formulario activo ─────────────────────────────────────── */
+@media (max-width: 720px) {
+  .login-shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .login-form-panel,
+  .login-shell--active .login-form-panel--signin,
+  .login-shell--active .login-form-panel--signup {
+    position: static;
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none !important;
+    transition: none;
+  }
+
+  .login-form-panel--signup { display: none; }
+  .login-shell--active .login-form-panel--signup { display: block; }
+  .login-shell--active .login-form-panel--signin { display: none; }
+
+  .login-form { padding: var(--space-xl) var(--space-lg); }
+
+  .login-toggle-container {
+    position: static;
+    order: -1;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+  }
+
+  .login-shell--active .login-toggle-container { transform: none; border-radius: 0; }
+
+  .login-toggle {
+    position: static;
+    width: 100%;
+    height: auto;
+    transform: none !important;
+  }
+
+  .login-toggle-panel {
+    position: static;
+    width: 100%;
+    padding: var(--space-xl) var(--space-lg);
+    display: none;
+    transform: none !important;
+  }
+
+  .login-toggle-panel--right { display: flex; }
+  .login-shell--active .login-toggle-panel--right { display: none; }
+  .login-shell--active .login-toggle-panel--left { display: flex; }
+}
