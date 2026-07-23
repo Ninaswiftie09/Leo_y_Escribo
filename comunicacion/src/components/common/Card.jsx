@@ -16,7 +16,7 @@ function Card({
   className = '',
   ...props
 }) {
-  const cardClasses = [
+  const cardClasses = [ 
     'app-card',
     `app-card--${variant}`,
     selected ? 'app-card--selected' : '',

@@ -1,0 +1,359 @@
+/* ============================================================
+   selection.css — Actividad: Seleccionar palabras o imágenes
+
+   Reutiliza:
+   - global.css
+   - typography.css
+   - Button.jsx
+   - Card.jsx
+
+   ============================================================ */
+
+
+/*Contendor */
+
+.selection-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+
+/* Tarjeta */
+
+.selection-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+
+    align-items: center;
+    text-align: center;
+
+    min-height: 580px;
+}
+
+
+/* Instrucciones*/
+
+.selection-instructions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+
+    max-width: 720px;
+}
+
+.selection-instructions p {
+    margin: 0;
+}
+
+
+/* Para las opciones */
+
+.selection-options {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(170px, 1fr));
+
+    gap: var(--space-lg);
+
+}
+
+
+/* ============================================================
+   Botón de selección
+   Puede contener:
+   - Imagen
+   - Palabra
+   - Imagen + palabra
+   ============================================================ */
+
+.selection-button {
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: var(--space-md);
+
+    min-height: 170px;
+
+    padding: var(--space-lg);
+
+    border: none;
+    border-radius: var(--radius-lg);
+
+    cursor: pointer;
+
+    color: var(--color-text);
+
+    box-shadow: var(--shadow-btn);
+
+    transition:
+        transform var(--transition),
+        background-color var(--transition),
+        box-shadow var(--transition),
+        filter var(--transition);
+
+}
+
+
+/* Colores automáticos de los botones
+   Cambian según el tema de la unidad (lesson-theme) */
+
+.selection-button:nth-child(5n + 1) {
+    background: var(--lesson-primary);
+    color: white;
+}
+
+.selection-button:nth-child(5n + 2) {
+    background: var(--lesson-secondary);
+    color: var(--lesson-text);
+}
+
+.selection-button:nth-child(5n + 3) {
+    background: var(--lesson-accent);
+    color: var(--lesson-text);
+}
+
+.selection-button:nth-child(5n + 4) {
+    background: var(--color-reward);
+    color: var(--color-text);
+}
+
+.selection-button:nth-child(5n + 5) {
+    background: var(--color-accent-soft);
+    color: var(--color-text);
+}
+
+
+.selection-button:hover {
+
+    transform: translateY(-3px);
+
+    filter: brightness(1.05);
+
+}
+
+.selection-button:active {
+
+    transform: translateY(2px);
+
+}
+
+
+/* Si es una imagen */
+
+.selection-image {
+
+    width: 100%;
+    max-width: 140px;
+    height: 140px;
+
+    object-fit: contain;
+
+}
+
+
+/* Si es una palabra */
+
+.selection-word {
+
+    font-family: var(--font-content);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+
+    text-align: center;
+
+}
+
+
+/* Para los botones seleccionados */
+
+.selection-button--selected {
+
+    outline: 4px solid var(--color-action);
+
+    outline-offset: 3px;
+
+    transform: scale(1.03);
+
+}
+
+
+/* Estado correcto */
+
+.selection-button--correct {
+
+    background: var(--color-correct);
+
+    color: white;
+
+    animation: selection-correct .35s ease;
+
+}
+
+
+/* Estado incorrecto */
+
+.selection-button--incorrect {
+
+    background: var(--color-retry);
+
+    color: var(--color-text);
+
+    animation: selection-shake .35s ease;
+
+}
+
+
+/* Para la retroalimentación */
+
+.selection-feedback {
+
+    min-height: 56px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: var(--space-sm);
+
+    padding: var(--space-md) var(--space-lg);
+
+    border-radius: var(--radius-md);
+
+    font-family: var(--font-ui);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+
+}
+
+
+.selection-feedback--correct {
+
+    background: var(--color-correct);
+
+    color: white;
+
+}
+
+
+.selection-feedback--retry {
+
+    background: var(--color-retry);
+
+    color: var(--color-text);
+
+}
+
+
+/* Animaciones */
+
+@keyframes selection-correct {
+
+    0% {
+        transform: scale(.9);
+    }
+
+    60% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+
+@keyframes selection-shake {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-6px);
+    }
+
+    40% {
+        transform: translateX(6px);
+    }
+
+    60% {
+        transform: translateX(-4px);
+    }
+
+    80% {
+        transform: translateX(4px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+
+}
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+    .selection-options {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+    .selection-button {
+
+        min-height: 140px;
+
+    }
+
+    .selection-image {
+
+        max-width: 110px;
+        height: 110px;
+
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .selection-options {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .selection-button {
+
+        min-height: 120px;
+
+    }
+
+    .selection-image {
+
+        max-width: 90px;
+        height: 90px;
+
+    }
+
+    .selection-word {
+
+        font-size: var(--font-size-md);
+
+    }
+
+}
