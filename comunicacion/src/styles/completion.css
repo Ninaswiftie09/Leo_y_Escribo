@@ -1,0 +1,357 @@
+/* ============================================================
+   completion.css — Actividades de completar y ordenar
+
+   Reutiliza:
+   - global.css
+   - typography.css
+   - Button.jsx
+   - Card.jsx
+
+   Incluye para:
+   - Completar palabras
+   - Completar oraciones
+   - Ordenar sílabas
+   - Elegir palabras faltantes
+============================================================ */
+
+/* ============================================================
+/* Esto se comparte en cada actividad */
+/* ============================================================ */
+
+/* Contendeor */
+.completion-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+/* Tarjeta principal */
+.completion-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-xl);
+    min-height: 580px;
+}
+
+/* Instrucciones */
+.completion-instructions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 760px;
+}
+
+.completion-instructions p {
+    margin: 0;
+}
+
+/* Área de contenido */
+.completion-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    width: 100%;
+    align-items: center;
+}
+
+/* La "caja" para el banco de opciones 
+Sirve para sílabas, palabras, letras*/
+.completion-bank {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-md);
+    padding: var(--space-xl);
+    /* Borde punteado y con el tema de la unidad */
+    border: 3px dashed var(--lesson-border, var(--color-border));
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-card);
+    transition: var(--transition);
+}
+
+/* Elementos del banco de opciones */
+.completion-chip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 90px;
+    min-height: 70px;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-md);
+    background: white;
+    border: 2px solid var(--lesson-border, var(--color-border));
+    cursor: grab;
+    user-select: none;
+    transition:
+        transform .2s,
+        box-shadow .2s,
+        border-color .2s,
+        background .2s;
+}
+
+
+.completion-chip:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+
+.completion-chip:active {
+    cursor: grabbing;
+}
+
+/* Cuando se arrastra un elemento */
+
+.completion-chip.dragging {
+    opacity: .85;
+
+    transform:
+
+        scale(1.08)
+
+        rotate(-3deg);
+
+    box-shadow: 0 10px 20px rgba(0,0,0,.18);
+}
+
+
+/* Donde ponen las opciones seleccionadas */
+.completion-target {
+    width: 100%;
+    min-height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    padding: var(--space-xl);
+    border: 3px dashed var(--lesson-border, var(--color-border));
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-card);
+    transition: .2s;
+}
+
+/* Cuando se arrastra un elemento sobre la caja */
+.completion-target.drag-over {
+    background: var(--color-action-soft);
+    border-color: var(--color-action);
+    transform: scale(1.01);
+}
+
+/*Retroalimentación */
+
+/*Mientras escribe */
+.completion-active{
+    border-color: var(--color-action);
+}
+
+/*Correcto*/
+.completion-correct{
+    border-color: var(--color-correct);
+
+    background:#eaf8ef;
+
+    color:var(--color-correct);
+}
+
+/*Incorrecto*/
+.completion-incorrect{
+    border-color: var(--color-retry);
+    background:#fff5e8;
+    color:#d97706;
+}
+
+/*Animaciones*/
+
+/*Correcto*/
+.completion-correct{
+    animation: completion-success .25s ease;
+}
+
+/*Incorrecto*/
+.completion-incorrect{
+    animation: completion-shake .25s;
+}
+@keyframes completion-success{
+
+    0%{
+        transform:scale(.95);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+@keyframes completion-shake{
+
+    0%,100%{
+        transform:translateX(0);
+    }
+
+    25%{
+        transform:translateX(-5px);
+    }
+
+    75%{
+        transform:translateX(5px);
+    }
+
+}
+
+/* ============================================================
+   Aqui si es espcifico de cada actividad en concreto*/
+/* ============================================================ */
+
+/* ============================================================
+   Completar palabras */
+
+/* Contenedor*/
+.completion-word {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xl);
+
+    width: 100%;
+}
+
+/* Imagen opcional */
+.completion-word-image {
+    width: 220px;
+    height: 220px;
+
+    object-fit: contain;
+}
+
+/* Contenedor de la palabra */
+.completion-word-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: var(--space-lg);
+}
+
+/* Palabra incompleta */
+.completion-word-pattern {
+    font-family: var(--font-content);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+
+    letter-spacing: .08em;
+}
+
+/* Input para que pueda escribir */
+.completion-word-input {
+    width: fit-content;
+    min-width: 90px;
+    max-width: 320px;
+    text-align: center;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+
+    padding: var(--space-sm) var(--space-md);
+}
+
+
+/* ============================================================
+   Completar oraciones  */
+
+.completion-sentence {
+    width: 100%;
+    text-align: center;
+    font-family: var(--font-content);
+    font-size: var(--font-size-lg);
+    line-height: 2.2;
+}
+
+
+/* Input dentro de la oración */
+.completion-sentence-input {
+    display: inline-block;
+    width: 10ch;
+    min-width: 80px;
+    margin: 0 .25rem;
+    text-align: center;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+
+/* ============================================================
+   Ordenar sílabas  */
+
+/* Contenedor general */
+.completion-syllables {
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--space-xl);
+
+    width: 100%;
+}
+
+/* Espacios donde se colocan las sílabas */
+.completion-syllable-slot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 90px;
+    min-height: 70px;
+    border-bottom: 4px solid var(--lesson-border, var(--color-border));
+    transition: var(--transition);
+}
+
+
+/* Cuando ya tiene una sílaba */
+.completion-syllable-slot.filled {
+    border: 2px solid var(--lesson-border, var(--color-border));
+    border-radius: var(--radius-md);
+    background: var(--color-action-soft);
+}
+
+
+/* ============================================================
+   Elegir palabras faltantes */
+
+/* Contenedor */
+.completion-words {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+
+    width: 100%;
+}
+
+
+/* Una oración */
+.completion-words-sentence {
+    text-align: center;
+    font-family: var(--font-content);
+    font-size: var(--font-size-lg);
+    line-height: 2.2;
+}
+
+/* Espacio donde cae una palabra */
+.completion-word-slot {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 120px;
+    min-height: 52px;
+    margin: 0 .25rem;
+    border-bottom: 4px solid var(--lesson-border, var(--color-border));
+    transition: var(--transition);
+}
+
+
+/* Cuando ya contiene una palabra */
+.completion-word-slot.filled {
+    border: 2px solid var(--lesson-border, var(--color-border));
+    border-radius: var(--radius-md);
+    background: var(--color-action-soft);
+}
