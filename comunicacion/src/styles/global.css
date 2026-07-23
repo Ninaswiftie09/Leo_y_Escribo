@@ -558,13 +558,13 @@ input::placeholder {
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  background-color: var(--color-bg-card);
+  background-color: var(--lesson-surface, var(--color-bg-card));
   border-radius: var(--radius-md);
   padding: var(--space-md) var(--space-lg);
   box-shadow: var(--shadow-sm);
   text-decoration: none;
-  color: var(--color-text);
-  border-left: 4px solid var(--color-action);
+  color: var(--lesson-text, var(--color-text));
+  border-left: 4px solid var(--lesson-border, var(--color-action));
   transition: transform var(--transition), box-shadow var(--transition);
 }
 

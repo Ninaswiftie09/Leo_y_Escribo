@@ -1,15 +1,16 @@
 import { Link } from 'react-router-dom'
+import { getLessonThemeClass, getLessonUnit } from '../data/lessonColors'
 
 const lessons = [
-  { id: 'vocales', title: 'Vocales', unit: 'Unidad 1' },
-  { id: 'm', title: 'Letra M', unit: 'Unidad 1' },
-  { id: 'l', title: 'Letra L', unit: 'Unidad 1' },
-  { id: 's', title: 'Letra S', unit: 'Unidad 1' },
-  { id: 'y', title: 'Letra Y', unit: 'Unidad 1' },
-  { id: 'r', title: 'Letra R', unit: 'Unidad 1' },
-  { id: 'p', title: 'Letra P', unit: 'Unidad 1' },
-  { id: 't', title: 'Letra T', unit: 'Unidad 1' },
-  { id: 'n', title: 'Letra N', unit: 'Unidad 1' },
+  { id: 'vocales', title: 'Vocales' },
+  { id: 'm', title: 'Letra M' },
+  { id: 'l', title: 'Letra L' },
+  { id: 's', title: 'Letra S' },
+  { id: 'y-conjuncion', title: 'Y como conjunción' },
+  { id: 'r', title: 'Letra R' },
+  { id: 'p', title: 'Letra P' },
+  { id: 't', title: 'Letra T' },
+  { id: 'n', title: 'Letra N' },
 ]
 
 function LessonsPage() {
@@ -20,16 +21,21 @@ function LessonsPage() {
         <p>Selecciona una lección para comenzar.</p>
 
         <div className="lesson-list">
-          {lessons.map((lesson) => (
-            <Link
-              key={lesson.id}
-              className="lesson-card"
-              to={`/lecciones/${lesson.id}`}
-            >
-              <span>{lesson.unit}</span>
-              <strong>{lesson.title}</strong>
-            </Link>
-          ))}
+          {lessons.map((lesson) => {
+            const unit = getLessonUnit(lesson.id)
+            const themeClass = getLessonThemeClass(lesson.id)
+
+            return (
+              <Link
+                key={lesson.id}
+                className={`lesson-card ${themeClass}`}
+                to={`/lecciones/${lesson.id}`}
+              >
+                <span className="lesson-card__unit">Unidad {unit}</span>
+                <strong className="lesson-card__title">{lesson.title}</strong>
+              </Link>
+            )
+          })}
         </div>
 
         <Link className="text-link" to="/home">

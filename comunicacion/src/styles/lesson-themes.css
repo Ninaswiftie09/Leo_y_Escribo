@@ -21,6 +21,17 @@
 
 /* Los componentes deben combinar color con texto, icono o audio para comunicar estados. */
 
+/* Tema seguro para identificadores desconocidos o lecciones aún no registradas. */
+.lesson-theme--default {
+  --lesson-primary: var(--color-action);
+  --lesson-secondary: var(--color-action-secondary);
+  --lesson-accent: var(--color-accent);
+  --lesson-surface: var(--color-surface);
+  --lesson-border: var(--color-action-secondary);
+  --lesson-text: var(--color-text);
+  --lesson-background: var(--color-background);
+}
+
 /* Unidades 1 y 4 comparten el tema azul. Los colores se repiten intencionalmente. */
 .lesson-theme--unit-1,
 .lesson-theme--unit-4 {

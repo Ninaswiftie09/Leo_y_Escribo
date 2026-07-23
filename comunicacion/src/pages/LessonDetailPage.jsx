@@ -1,10 +1,12 @@
 import { Link, useParams } from 'react-router-dom'
+import { getLessonThemeClass } from '../data/lessonColors'
 
 function LessonDetailPage() {
   const { lessonId } = useParams()
+  const themeClass = getLessonThemeClass(lessonId)
 
   return (
-    <main className="page">
+    <main className={`page lesson-detail-page ${themeClass}`}>
       <section className="card">
         <h1>Lección: {lessonId?.toUpperCase()}</h1>
         <p>Aquí irá la información de la lección seleccionada.</p>

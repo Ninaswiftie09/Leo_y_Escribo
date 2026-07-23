@@ -1,39 +1,13 @@
-/* themes.css — Variables de color generales (Leo y Escribo)
-   Se importa al final en main.jsx: gana sobre los tokens
-   provisionales de global.css y lesson-themes.css.
-   Nombres de variable ya usados en toda la app; no renombrar. */
+/* Variables complementarias de Leo y Escribo.
+   Este archivo se carga al final, por lo que no reemplaza la paleta
+   semántica ni los temas definidos en lesson-themes.css. */
 
 :root {
-  /* Fondo */
-  --color-bg: #FFFDF9;
-  --color-bg-card: #FFFFFF;
-
-  /* Texto */
-  --color-text: #243B53;
   --color-text-alt: #5A6B7D;
-
-  /* Acción principal */
-  --color-action: #1F75B5;
   --color-action-soft: #E8F2FB;
-
-  /* Acierto */
-  --color-correct: #1C7C43;
-
-  /* Intento / reintento */
-  --color-retry: #E0A93B;
-
-  /* Premio */
-  --color-reward: #FFCA3A;
-
-  /* Apoyo y acento */
-  --color-support: #6FCF97;
-  --color-accent: #6A4C93;
-  --color-accent-soft: #FFB088;
-
-  /* Bordes y tarjetas */
   --color-border: #D2DCE8;
 
-  /* Estados de interacción — hover/active/disabled sobre --color-action */
+  /* Estados de interacción sobre la acción principal. */
   --color-action-hover: #1A649C;
   --color-action-active: #155582;
   --color-disabled-bg: #E3E8EE;
