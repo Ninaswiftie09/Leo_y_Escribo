@@ -1,19 +1,22 @@
-/* Distribución específica de landing page 
-   Los colores generales se reutilizan desde global.css. */
+/* Estilos exclusivos de la landing page
+   La paleta, tipografía y componentes se reutilizan
+   desde los estilos globales del proyecto. */
 
 .landing-page {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
   background-color: var(--color-background);
 }
 
 .landing-page__content {
-  width: min(100%, 1000px);
+  width: min(100%, 1200px);
   margin-inline: auto;
 }
+
+/* Encabezado */
 
 .landing-page__header {
   max-width: 650px;
@@ -22,24 +25,47 @@
 }
 
 .landing-page__header h1 {
-  margin: 0.75rem 0 0.5rem;
+  position: relative;
+  display: inline-block;
+  margin: 0 0 0.75rem;
   color: var(--color-text);
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.landing-page__header h1::after {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 5px;
+  margin: 0.4rem auto 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--color-action),
+    var(--color-reward),
+    var(--color-accent)
+  );
 }
 
 .landing-page__header p {
   margin: 0;
   color: var(--color-text);
+  font-size: 1.05rem;
+  line-height: 1.5;
 }
+
+/* Distribución de los dos proyectos */
 
 .landing-page__projects {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 /* Estilos compartidos por las dos tarjetas */
 
 .project-card {
+  min-height: 470px;
   height: 100%;
   overflow: hidden;
   text-align: center;
@@ -51,17 +77,23 @@
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgb(36 59 83 / 14%);
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 20px
+    color-mix(in srgb, var(--color-text) 12%, transparent);
 }
+
+/* Imágenes de las tarjetas */
 
 .project-card .app-card__image {
   display: block;
   width: 100%;
-  height: 220px;
+  height: clamp(240px, 22vw, 300px);
   object-fit: cover;
   border-radius: 1rem;
 }
+
+/* Alineación del contenido interno de Card */
 
 .project-card .app-card__content {
   align-items: center;
@@ -85,30 +117,9 @@
 }
 
 
+/* Adaptación para dispositivos moviles*/
 
-.project-card--upcoming {
-  opacity: 0.85;
-}
-
-.project-card--upcoming:hover {
-  transform: none;
-}
-
-/* Etiqueta superior */
-
-.landing-page .badge {
-  display: inline-flex;
-  padding: 0.4rem 0.8rem;
-  border-radius: 999px;
-  color: var(--color-text);
-  background-color: var(--color-reward);
-  font-size: 0.875rem;
-  font-weight: 700;
-}
-
-/* Pantallas pequeñas */
-
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .landing-page {
     align-items: flex-start;
     padding: 1.25rem;
@@ -116,10 +127,16 @@
 
   .landing-page__projects {
     grid-template-columns: 1fr;
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  .project-card {
+    min-height: auto;
   }
 
   .project-card .app-card__image {
-    height: 190px;
+    height: 260px;
   }
 }
 
@@ -128,7 +145,16 @@
     padding: 1rem;
   }
 
+  .landing-page__header {
+    margin-bottom: 1.5rem;
+  }
+
+  .landing-page__header p {
+    font-size: 1rem;
+  }
+
   .project-card .app-card__image {
-    height: 165px;
+    height: 190px;
   }
 }
+
