@@ -1,0 +1,134 @@
+/* Distribución específica de landing page 
+   Los colores generales se reutilizan desde global.css. */
+
+.landing-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: var(--color-background);
+}
+
+.landing-page__content {
+  width: min(100%, 1000px);
+  margin-inline: auto;
+}
+
+.landing-page__header {
+  max-width: 650px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.landing-page__header h1 {
+  margin: 0.75rem 0 0.5rem;
+  color: var(--color-text);
+}
+
+.landing-page__header p {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.landing-page__projects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+/* Estilos compartidos por las dos tarjetas */
+
+.project-card {
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+  background-color: var(--color-surface);
+  border: 3px solid transparent;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgb(36 59 83 / 14%);
+}
+
+.project-card .app-card__image {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.project-card .app-card__content {
+  align-items: center;
+}
+
+.project-card .app-card__footer {
+  width: 100%;
+  margin-top: auto;
+}
+
+/* Tarjeta de Lenguaje */
+
+.project-card--language {
+  border-color: var(--color-action);
+}
+
+/* Tarjeta de Matemáticas */
+
+.project-card--math {
+  border-color: var(--color-accent);
+}
+
+
+
+.project-card--upcoming {
+  opacity: 0.85;
+}
+
+.project-card--upcoming:hover {
+  transform: none;
+}
+
+/* Etiqueta superior */
+
+.landing-page .badge {
+  display: inline-flex;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  color: var(--color-text);
+  background-color: var(--color-reward);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+/* Pantallas pequeñas */
+
+@media (max-width: 700px) {
+  .landing-page {
+    align-items: flex-start;
+    padding: 1.25rem;
+  }
+
+  .landing-page__projects {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card .app-card__image {
+    height: 190px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-page {
+    padding: 1rem;
+  }
+
+  .project-card .app-card__image {
+    height: 165px;
+  }
+}
